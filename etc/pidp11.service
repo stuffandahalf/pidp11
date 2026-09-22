@@ -1,0 +1,14 @@
+[Unit]
+Description=PIDP/11 emulator service
+After=network.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+User=root
+Group=gpio
+ExecStart=/opt/pidp11/bin/pdp11control.sh start
+ExecStop=/opt/pidp11/bin/pdp11control.sh stop
+
+[Install]
+WantedBy=multi-user.target

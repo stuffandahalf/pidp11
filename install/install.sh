@@ -72,17 +72,22 @@ while true; do
     read -p "Install the required dependencies? " prxn
     case $prxn in
         [Yy]* ) 
-            sudo apt update
-            #Install SDL2, optionally used for PDP-11 graphics terminal emulation
-            sudo apt install -y libsdl2-dev
-            #Install pcap, optionally used when PDP-11 networking is enabled
-            sudo apt install -y libpcap-dev
-            #Install readline, used for command-line editing in simh
-            sudo apt install -y libreadline-dev
+            # Install SDL2, optionally used for PDP-11 graphics terminal emulation
+            # Install pcap, optionally used when PDP-11 networking is enabled
+            # Install readline, used for command-line editing in simh
             # Install screen
-            sudo apt install -y screen
             # Install newer RPC system
-            sudo apt install -y libtirpc-dev
+			# Install rpcbind
+			# Install bsdmainutils (column util)
+            sudo apt update
+            sudo apt install -y \
+				libsdl2-dev \
+	            libpcap-dev \
+            	libreadline-dev \
+            	screen \
+            	libtirpc-dev \
+				rpcbind \
+				bsdmainutils
             break
 	    ;;
         [Nn]* ) 
